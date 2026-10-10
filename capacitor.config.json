@@ -1,0 +1,7 @@
+{
+  "appId": "com.kingselectricals.app",
+  "appName": "Kings Electricals",
+  "webDir": "www",
+  "backgroundColor": "#F4F8FD",
+  "android": { "allowMixedContent": false }
+}
