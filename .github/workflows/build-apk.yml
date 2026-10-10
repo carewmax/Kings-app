@@ -2,6 +2,8 @@ name: Build APK
 on:
   push:
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,7 +35,9 @@ jobs:
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
-      - uses: actions/upload-artifact@v4
+      - name: Publish APK download
+        uses: softprops/action-gh-release@v2
         with:
-          name: Kings-Electricals-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          tag_name: v${{ github.run_number }}
+          name: Kings app v${{ github.run_number }}
+          files: android/app/build/outputs/apk/debug/app-debug.apk
